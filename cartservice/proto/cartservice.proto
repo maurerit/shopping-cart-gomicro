@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package cartservice;
+
+service CartService {
+    rpc GetShoppingCart (ShoppingCartRequest) returns (ShoppingCart) {
+    };
+    rpc GetByCartId (ShoppingCartRequest) returns (ShoppingCart) {
+    };
+    rpc AddItemToCart (ShoppingCartItem) returns (ApiResponse) {
+    };
+    rpc Checkout (ShoppingCartRequest) returns (ApiResponse) {
+    };
+    rpc UpdateItem (ShoppingCartItem) returns (ApiResponse) {
+    };
+}
+
+message ShoppingCartRequest {
+    int64 ShoppingCartId = 1;
+}
+
+message ApiResponse {
+    bool Success = 1;
+}
+
+message ShoppingCart {
+    int64 ShoppingCartId = 1;
+    int64 CustomerId = 2;
+    uint32 Status = 3;
+    repeated ShoppingCartItem Items = 4;
+}
+
+message ShoppingCartItem {
+    int64 ShoppingCartId = 1;
+    int64 ItemId = 2;
+    int64 Quantity = 3;
+    float Price = 4;
+    uint32 Status = 5;
+}
