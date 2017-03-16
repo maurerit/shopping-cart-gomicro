@@ -77,12 +77,6 @@ func main() {
 	defer repository.DB.Close()
 	//</editor-fold>
 
-	cart, err := repository.GetShoppingCartByCustomerId(1)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(cart)
-
 	service.Init()
 	cartservice.RegisterCartServiceHandler(service.Server(),
 		&handling.CartService{service.Client()})
