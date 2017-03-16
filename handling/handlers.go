@@ -1,8 +1,8 @@
 package handling
 
 import (
-	"fmt"
-	"github.com/maurerit/shopping-cart-gomicro/cartservice/proto"
+	"database/sql"
+	"github.com/maurerit/shopping-cart-gomicro/proto"
 	"github.com/micro/go-micro/client"
 	"golang.org/x/net/context"
 )
@@ -15,10 +15,6 @@ func (cs CartService) GetShoppingCart(ctx context.Context,
 	request *cartservice.ShoppingCartRequest,
 	response *cartservice.ShoppingCart) error {
 
-	fmt.Println(request)
-	response.ShoppingCartId = 2000
-	response.CustomerId = 2000
-	response.Status = 2000
 	return nil
 }
 
@@ -48,4 +44,12 @@ func (cs CartService) UpdateItem(ctx context.Context,
 	response *cartservice.ApiResponse) error {
 
 	return nil
+}
+
+func buildShoppingCartFromRows(rows *sql.Rows) (cartservice.ShoppingCart, error) {
+	return cartservice.ShoppingCart{}, nil
+}
+
+func buildShoppingCartItemFromRows(rows *sql.Rows) (cartservice.ShoppingCartItem, error) {
+	return cartservice.ShoppingCartItem{}, nil
 }
