@@ -30,6 +30,8 @@ type Configuration struct {
 	}
 }
 
+var version string = "1.0.0"
+
 func main() {
 	configuration := Configuration{}
 
@@ -50,7 +52,8 @@ func main() {
 
 	//TODO: Candidate for shared function for all my services
 	service := micro.NewService(
-		micro.Name(configuration.Application.Namespace + "." + configuration.Application.Name),
+		micro.Name(configuration.Application.Namespace+"."+configuration.Application.Name),
+		micro.Version(version),
 	)
 
 	//<editor-fold desc="DB Initialization">

@@ -16,11 +16,14 @@ service CartService {
 }
 
 message ShoppingCartRequest {
+    //    oneof id_for_request {
     int64 ShoppingCartId = 1;
+    int64 CustomerId = 2;
+    //    }
 }
 
 message ApiResponse {
-    bool Success = 1;
+    string Success = 1;
 }
 
 message ShoppingCart {
